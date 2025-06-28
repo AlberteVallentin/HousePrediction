@@ -126,91 +126,76 @@
 
 **Systematic Documentation**: Parser consultation for every missing feature ensured comprehensive understanding of data structure and business context.
 
-## Preprocessing Strategy for Notebook 02
+## Key Findings from Notebook 02: Structured Missing Data Treatment
 
-### Implementation Sequence and Rationale
+### Systematic Missing Data Treatment Methodology
 
-**Section 1: Data Loading and Parser Setup**
+**Three-Tier Strategy Implementation**:
 
-- Establish foundation with validated data imports and parser integration
-- Creates consistent preprocessing environment across train/test datasets
+**Section 3.3: Structural Absence Treatment (15 Features)**
+- Applied 'None' replacement to categorical features representing absent structures
+- Logic: If pool/garage/basement doesn't exist, there's no quality/type to rate
+- Examples: PoolQC, MiscFeature, Alley, Fence → 'None' when structure absent
+- Result: Clean categorical encoding without artificial imputation
 
-**Section 2: Missing Data Treatment (34 Features)**
+**Section 3.4: Geographic Feature Treatment (9 Features)**  
+- Used neighborhood mode for features that cluster geographically
+- Geographic features: MSZoning, Exterior styles, SaleType (local patterns)
+- System features: Electrical, Utilities, Functional, KitchenQual (neighborhood development eras)
+- Rationale: Properties in same neighborhood share infrastructure and architectural patterns
 
-- **Priority**: Handle missing data before any feature transformations to avoid bias
-- **Methodology**: Three-tier parser-guided approach based on domain knowledge
-- **Rationale**: Missing data patterns reflect real estate logic, requiring domain expertise over statistical imputation
+**Section 3.5: Coordinated Numerical Analysis (10 Features)**
+- Implemented structure-aware logic for measurement features
+- Garage features: If GarageType='None' → set measurements to 0, else identify missing cases
+- Basement features: If BsmtQual='None' → set measurements to 0, else identify missing cases  
+- Masonry features: If MasVnrType='None' → set MasVnrArea to 0, else identify missing cases
 
-**Section 3.1: Ordinal Feature Correction (3 Features)**
+### Manual Review Process and Data Quality Decisions
 
-- **Timing**: After missing data cleanup, before categorical encoding
-- **Features**: OverallQual, OverallCond, MSSubClass (discovered as misclassified in Notebook 01)
-- **Rationale**: Parser validation revealed these are ordinal categories stored as integers, requiring proper ordered encoding
+**Edge Case Identification**: Analysis revealed 2 houses requiring individual assessment:
+- House 2127: Missing GarageYrBlt only (garage exists with measurements)
+- House 2577: Missing all garage measurements (ambiguous garage status)
 
-**Section 3.2-3.3: Feature Encoding and Processing**
+**Decision Framework Applied**:
 
-- **Sequence**: Categorical encoding after ordinal correction ensures proper treatment hierarchy
-- **Approach**: Distinguish between nominal and ordinal categories using parser guidance
+**House 2127 Resolution**:
+- Evidence: GarageType='Detchd', GarageArea=360, GarageCars=1 (garage clearly exists)
+- Decision: GarageYrBlt → YearRemodAdd (1983) 
+- Rationale: Garage likely built/rebuilt during major home renovation
 
-**Section 4: Target Variable Transformation**
+**House 2577 Resolution**:  
+- Evidence: GarageType='Detchd' but GarageQual/Cond/Finish='None', all measurements missing
+- Decision: Complete garage feature reset → all garage features set to 'None'/0
+- Rationale: Inconsistent data suggests non-functional garage; prioritize data consistency over partial information
 
-- **Implementation**: Log transformation of SalePrice (skewness: 1.88 → 0.12)
-- **Timing**: After feature processing but before outlier removal to ensure transformation effectiveness assessment
+**Data Consistency Principle**: When structural evidence conflicts with measurement evidence, choose conservative approach ensuring logical coherence across all related features.
 
-**Section 5: Outlier Treatment - Conservative Approach**
+### Research-Validated Approach
 
-- **Timing**: After feature engineering, before final export
-- **Specific Removal**: Only IDs 524 and 1299 (0.14% of data)
-- **Rationale**: These represent data quality violations (partial sales of incomplete luxury properties), not legitimate market extremes
+**Industry Standard Validation**: Web research of Kaggle Ames housing solutions confirmed our approach aligns with best practices:
+- GarageYrBlt missing values commonly filled with YearBuilt/YearRemodAdd
+- Missing garage measurements typically set to 0 for houses without garages
+- Neighborhood-based imputation recognized as superior to global statistics for geographic features
 
-### Outlier Removal Justification
+**Conservative Data Quality Philosophy**:
+- Preserve data integrity over aggressive imputation
+- Maintain logical relationships between coordinated features  
+- Document manual decisions for reproducibility and audit trails
+- Prioritize business logic validation over purely statistical approaches
 
-**Why Only 2 Outliers vs. Statistical Outliers**:
+### Preprocessing Architecture Innovation
 
-- **Data Quality vs. Market Extremes**: Other statistical outliers represent legitimate market variation (expensive luxury homes, budget properties)
-- **Business Context Validation**: IDs 524/1299 confirmed as "Partial" sales = incomplete construction, violating normal market conditions
-- **Conservative Philosophy**: Preserve market diversity while removing clear data collection errors
-- **Specific Criteria**: Extreme size-price violations (>4000 sqft, <$200k) combined with non-market sale conditions
+**Structure-Aware Missing Data Treatment**:
+- Revolutionary approach using categorical structure indicators (GarageType, BsmtQual, MasVnrType) to guide numerical imputation decisions
+- Prevents illogical assignments (garage area to houses without garages)
+- Maintains architectural coherence across related feature groups
+- Enables intelligent automation while preserving manual oversight for edge cases
 
-**Evidence-Based Decision**:
-
-- Both houses: OverallQual=10 (maximum quality) but sold as partial sales at severe discounts
-- Size violations: Living areas 4676/5642 sqft but prices $184,750/$160,000
-- Business logic violation: High-quality large properties cannot legitimately sell at such prices under normal market conditions
-
-**Alternative Outliers Preserved**:
-
-- Large expensive houses: Legitimate luxury market segment
-- Small cheap houses: Legitimate budget market segment
-- Statistical outliers without business context violations: Natural market variation
-
-### Preprocessing Decision Methodology
-
-**Parser-Guided vs. Statistical Approaches**:
-
-- **Domain Knowledge Integration**: Official real estate documentation drives decisions over purely statistical methods
-- **Missing Data Strategy**: "None" categories vs. imputation determined by parser consultation, not missing percentage thresholds
-- **Feature Classification**: Parser validation overrides pandas automatic type detection
-
-**Geographic vs. Target-Dependent Information**:
-
-- **Geographic Features**: Neighborhood-based imputation uses combined train/test data as geographic patterns represent external structural knowledge
-- **System Features**: Standard/technical features use training data only to prevent potential target leakage
-- **Rationale**: Geographic characteristics (zoning, architectural styles) exist independently of house prices and reflect inherent location properties
-
-**Coordinated Feature Architecture Logic**:
-
-- **Architectural Coherence Principle**: Related features (garage area, garage capacity) missing together indicates absent structure rather than random data collection errors
-- **Structure Indicator Strategy**: Use categorical features (GarageType, BsmtQual, MasVnrType) to determine if structure exists before imputation decisions
-- **Smart Imputation Logic**: If structure exists but measurement missing → neighborhood median (local building patterns), if structure absent → 0 (no artificial measurements)
-- **Special Cases**: GarageYrBlt uses YearBuilt when garage exists (garages typically built with house), 0 when no garage
-- **Business Logic Validation**: Prevents assigning garage area to houses without garages or basement measurements to houses without basements
-
-**Conservative vs. Aggressive Preprocessing**:
-
-- **Minimal Data Loss**: Only remove clear data quality violations (0.14% outlier removal)
-- **Preserve Market Signals**: Maintain legitimate market extremes and variation
-- **Evidence-Based Decisions**: Every preprocessing step validated against domain knowledge and business context
+**Parser-Guided Domain Knowledge Integration**:
+- Official real estate documentation consultation for every preprocessing decision
+- Domain expertise prioritized over statistical convenience
+- Systematic categorization by business logic rather than missing data percentages
+- Evidence-based decision making with clear rationale documentation
 
 ### Feature Engineering Opportunities
 
