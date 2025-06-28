@@ -197,6 +197,30 @@
 - Systematic categorization by business logic rather than missing data percentages
 - Evidence-based decision making with clear rationale documentation
 
+### Categorical Encoding Methodology
+
+**Iterative Encoding Development Process**:
+
+**Initial Label Encoder Approach**: Started with standard sklearn label encoders for ordinal features to automatically convert categorical values to integers.
+
+**Discovery of Encoding Issues**: Label encoders assigned arbitrary values that broke logical ordinal relationships - "None" could become 4 instead of the logical 0, disrupting the natural progression of quality scales (Poor → Fair → Typical → Good → Excellent).
+
+**Manual Integer Mapping Solution**: Developed custom manual mappings to ensure predictable ordinal relationships:
+- Quality scales: None=0, Po=1, Fa=2, TA=3, Gd=4, Ex=5
+- Finish types: None=0, Unf=1, LwQ=2, Rec=3, BLQ=4, ALQ=5, GLQ=6
+- Custom mappings for each ordinal feature based on domain logic
+
+**One-Hot Encoding Optimization**: Applied `pd.get_dummies(drop_first=True)` for nominal features to:
+- Convert categorical variables to binary indicators
+- Prevent multicollinearity by eliminating redundant columns
+- Maintain categorical information while enabling ML algorithm compatibility
+
+**Methodological Advantages**:
+- **Predictable Results**: Manual control ensures encodings align with business logic
+- **Interpretability**: Encoded values preserve ordinal meaning and domain knowledge
+- **ML Compatibility**: Integer encodings perform better than categorical objects in most algorithms
+- **Quality Assurance**: Direct control over encoding assignments eliminates arbitrary mappings
+
 ### Feature Engineering Opportunities
 
 - **Composite features** combining related measurements (total area calculations)
