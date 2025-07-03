@@ -1,0 +1,42 @@
+{
+  "model_type": "ensemble",
+  "cv_rmse": 0.1135,
+  "cv_std": 0.0103,
+  "weights": {
+    "elastic_net": 0.3017775402566104,
+    "xgboost": 0.27841093054122185,
+    "lightgbm": 0.12004286912192369,
+    "catboost": 0.29976866008024405
+  },
+  "model_params": {
+    "elastic_net": {
+      "alpha": 0.026627734419109022,
+      "l1_ratio": 0.12755373890245547
+    },
+    "xgboost": {
+      "n_estimators": 3899,
+      "learning_rate": 0.006607674491451586,
+      "max_depth": 3,
+      "subsample": 0.54598014908064,
+      "colsample_bytree": 0.2512734430923171,
+      "min_child_weight": 2
+    },
+    "lightgbm": {
+      "n_estimators": 1000,
+      "learning_rate": 0.05,
+      "num_leaves": 31,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "min_child_samples": 20,
+      "random_state": 42,
+      "verbosity": -1
+    },
+    "catboost": {
+      "iterations": 6142,
+      "learning_rate": 0.007542171277032282,
+      "depth": 5,
+      "l2_leaf_reg": 2.7643427916365817
+    }
+  }
+}
