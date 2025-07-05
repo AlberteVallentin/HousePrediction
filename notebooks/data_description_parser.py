@@ -287,13 +287,3 @@ def quick_feature_lookup(feature_name: str, df: pd.DataFrame = None) -> None:
     display_feature_info(df, feature_name)
 
 
-# Test the parser when run directly
-def test_parser():
-    """Test function for the parser"""
-    df = parse_data_description("../docs/data_description.txt")
-    display_summary_table(df, max_rows=10)
-    print("\nExample feature lookup:")
-    display_feature_info(df, "OverallQual")
-
-if __name__ == "__main__":
-    test_parser()
