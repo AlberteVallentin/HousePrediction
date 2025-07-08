@@ -209,7 +209,7 @@ def get_numerical_features(df: pd.DataFrame) -> List[str]:
     return df[df['Type'] == 'Numerical']['Feature'].tolist()
 
 
-def display_summary_table(df: pd.DataFrame, max_rows: int = 20) -> None:
+def display_summary_table(df: pd.DataFrame, max_rows: int = 90) -> None:
     """
     Display a summary table of features with truncated categories.
     
