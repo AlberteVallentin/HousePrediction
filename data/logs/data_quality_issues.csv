@@ -1,75 +1,75 @@
-Id,Issue
-1877,Remodel date before construction year
-524,Remodel date is after the house was sold
-2296,Remodel date is after the house was sold
-2550,Remodel date is after the house was sold
-2550,Construction year is after the house was sold
-30,Garage built before the house
-94,Garage built before the house
-325,Garage built before the house
-601,Garage built before the house
-737,Garage built before the house
-1104,Garage built before the house
-1377,Garage built before the house
-1415,Garage built before the house
-1419,Garage built before the house
-1522,Garage built before the house
-1577,Garage built before the house
-1806,Garage built before the house
-1841,Garage built before the house
-1896,Garage built before the house
-1898,Garage built before the house
-2123,Garage built before the house
-2264,Garage built before the house
-2510,Garage built before the house
-2550,Garage built after the house was sold
-2593,Garage built after the house was sold
-52,1st + 2nd Floor SF does not match GrLivArea
-89,1st + 2nd Floor SF does not match GrLivArea
-126,1st + 2nd Floor SF does not match GrLivArea
-171,1st + 2nd Floor SF does not match GrLivArea
-186,1st + 2nd Floor SF does not match GrLivArea
-188,1st + 2nd Floor SF does not match GrLivArea
-198,1st + 2nd Floor SF does not match GrLivArea
-199,1st + 2nd Floor SF does not match GrLivArea
-264,1st + 2nd Floor SF does not match GrLivArea
-268,1st + 2nd Floor SF does not match GrLivArea
-407,1st + 2nd Floor SF does not match GrLivArea
-590,1st + 2nd Floor SF does not match GrLivArea
-636,1st + 2nd Floor SF does not match GrLivArea
-730,1st + 2nd Floor SF does not match GrLivArea
-830,1st + 2nd Floor SF does not match GrLivArea
-832,1st + 2nd Floor SF does not match GrLivArea
-869,1st + 2nd Floor SF does not match GrLivArea
-874,1st + 2nd Floor SF does not match GrLivArea
-884,1st + 2nd Floor SF does not match GrLivArea
-946,1st + 2nd Floor SF does not match GrLivArea
-1010,1st + 2nd Floor SF does not match GrLivArea
-1032,1st + 2nd Floor SF does not match GrLivArea
-1174,1st + 2nd Floor SF does not match GrLivArea
-1350,1st + 2nd Floor SF does not match GrLivArea
-1365,1st + 2nd Floor SF does not match GrLivArea
-1441,1st + 2nd Floor SF does not match GrLivArea
-1571,1st + 2nd Floor SF does not match GrLivArea
-1786,1st + 2nd Floor SF does not match GrLivArea
-1802,1st + 2nd Floor SF does not match GrLivArea
-1821,1st + 2nd Floor SF does not match GrLivArea
-1845,1st + 2nd Floor SF does not match GrLivArea
-1913,1st + 2nd Floor SF does not match GrLivArea
-2091,1st + 2nd Floor SF does not match GrLivArea
-2131,1st + 2nd Floor SF does not match GrLivArea
-2424,1st + 2nd Floor SF does not match GrLivArea
-2474,1st + 2nd Floor SF does not match GrLivArea
-2579,1st + 2nd Floor SF does not match GrLivArea
-2714,1st + 2nd Floor SF does not match GrLivArea
-2819,1st + 2nd Floor SF does not match GrLivArea
-2871,1st + 2nd Floor SF does not match GrLivArea
-2218,Basement has area but BsmtQual is missing
-2219,Basement has area but BsmtQual is missing
-2421,Pool has area but PoolQC is missing
-2504,Pool has area but PoolQC is missing
-2600,Pool has area but PoolQC is missing
-2550,MiscVal > 0 but MiscFeature is missing
-955,No kitchen above grade
-2588,No kitchen above grade
-2860,No kitchen above grade
+Id,Issue,IssueCount
+1877,Remodel date before construction year,1
+524,Remodel date is after the house was sold,1
+2296,Remodel date is after the house was sold,1
+2550,Remodel date is after the house was sold,4
+2550,Construction year is after the house was sold,4
+30,Garage built before the house,1
+94,Garage built before the house,1
+325,Garage built before the house,1
+601,Garage built before the house,1
+737,Garage built before the house,1
+1104,Garage built before the house,1
+1377,Garage built before the house,1
+1415,Garage built before the house,1
+1419,Garage built before the house,1
+1522,Garage built before the house,1
+1577,Garage built before the house,1
+1806,Garage built before the house,1
+1841,Garage built before the house,1
+1896,Garage built before the house,1
+1898,Garage built before the house,1
+2123,Garage built before the house,1
+2264,Garage built before the house,1
+2510,Garage built before the house,1
+2550,Garage built after the house was sold,4
+2593,Garage built after the house was sold,1
+52,1st + 2nd Floor SF does not match GrLivArea,1
+89,1st + 2nd Floor SF does not match GrLivArea,1
+126,1st + 2nd Floor SF does not match GrLivArea,1
+171,1st + 2nd Floor SF does not match GrLivArea,1
+186,1st + 2nd Floor SF does not match GrLivArea,1
+188,1st + 2nd Floor SF does not match GrLivArea,1
+198,1st + 2nd Floor SF does not match GrLivArea,1
+199,1st + 2nd Floor SF does not match GrLivArea,1
+264,1st + 2nd Floor SF does not match GrLivArea,1
+268,1st + 2nd Floor SF does not match GrLivArea,1
+407,1st + 2nd Floor SF does not match GrLivArea,1
+590,1st + 2nd Floor SF does not match GrLivArea,1
+636,1st + 2nd Floor SF does not match GrLivArea,1
+730,1st + 2nd Floor SF does not match GrLivArea,1
+830,1st + 2nd Floor SF does not match GrLivArea,1
+832,1st + 2nd Floor SF does not match GrLivArea,1
+869,1st + 2nd Floor SF does not match GrLivArea,1
+874,1st + 2nd Floor SF does not match GrLivArea,1
+884,1st + 2nd Floor SF does not match GrLivArea,1
+946,1st + 2nd Floor SF does not match GrLivArea,1
+1010,1st + 2nd Floor SF does not match GrLivArea,1
+1032,1st + 2nd Floor SF does not match GrLivArea,1
+1174,1st + 2nd Floor SF does not match GrLivArea,1
+1350,1st + 2nd Floor SF does not match GrLivArea,1
+1365,1st + 2nd Floor SF does not match GrLivArea,1
+1441,1st + 2nd Floor SF does not match GrLivArea,1
+1571,1st + 2nd Floor SF does not match GrLivArea,1
+1786,1st + 2nd Floor SF does not match GrLivArea,1
+1802,1st + 2nd Floor SF does not match GrLivArea,1
+1821,1st + 2nd Floor SF does not match GrLivArea,1
+1845,1st + 2nd Floor SF does not match GrLivArea,1
+1913,1st + 2nd Floor SF does not match GrLivArea,1
+2091,1st + 2nd Floor SF does not match GrLivArea,1
+2131,1st + 2nd Floor SF does not match GrLivArea,1
+2424,1st + 2nd Floor SF does not match GrLivArea,1
+2474,1st + 2nd Floor SF does not match GrLivArea,1
+2579,1st + 2nd Floor SF does not match GrLivArea,1
+2714,1st + 2nd Floor SF does not match GrLivArea,1
+2819,1st + 2nd Floor SF does not match GrLivArea,1
+2871,1st + 2nd Floor SF does not match GrLivArea,1
+2218,Basement has area but BsmtQual is missing,1
+2219,Basement has area but BsmtQual is missing,1
+2421,Pool has area but PoolQC is missing,1
+2504,Pool has area but PoolQC is missing,1
+2600,Pool has area but PoolQC is missing,1
+2550,MiscVal > 0 but MiscFeature is missing,4
+955,No kitchen above grade,1
+2588,No kitchen above grade,1
+2860,No kitchen above grade,1
