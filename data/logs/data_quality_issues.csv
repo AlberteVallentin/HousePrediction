@@ -24,46 +24,6 @@ Id,Issue,IssueCount
 2510,Garage built before the house,1
 2550,Garage built after the house was sold,4
 2593,Garage built after the house was sold,1
-52,1st + 2nd Floor SF does not match GrLivArea,1
-89,1st + 2nd Floor SF does not match GrLivArea,1
-126,1st + 2nd Floor SF does not match GrLivArea,1
-171,1st + 2nd Floor SF does not match GrLivArea,1
-186,1st + 2nd Floor SF does not match GrLivArea,1
-188,1st + 2nd Floor SF does not match GrLivArea,1
-198,1st + 2nd Floor SF does not match GrLivArea,1
-199,1st + 2nd Floor SF does not match GrLivArea,1
-264,1st + 2nd Floor SF does not match GrLivArea,1
-268,1st + 2nd Floor SF does not match GrLivArea,1
-407,1st + 2nd Floor SF does not match GrLivArea,1
-590,1st + 2nd Floor SF does not match GrLivArea,1
-636,1st + 2nd Floor SF does not match GrLivArea,1
-730,1st + 2nd Floor SF does not match GrLivArea,1
-830,1st + 2nd Floor SF does not match GrLivArea,1
-832,1st + 2nd Floor SF does not match GrLivArea,1
-869,1st + 2nd Floor SF does not match GrLivArea,1
-874,1st + 2nd Floor SF does not match GrLivArea,1
-884,1st + 2nd Floor SF does not match GrLivArea,1
-946,1st + 2nd Floor SF does not match GrLivArea,1
-1010,1st + 2nd Floor SF does not match GrLivArea,1
-1032,1st + 2nd Floor SF does not match GrLivArea,1
-1174,1st + 2nd Floor SF does not match GrLivArea,1
-1350,1st + 2nd Floor SF does not match GrLivArea,1
-1365,1st + 2nd Floor SF does not match GrLivArea,1
-1441,1st + 2nd Floor SF does not match GrLivArea,1
-1571,1st + 2nd Floor SF does not match GrLivArea,1
-1786,1st + 2nd Floor SF does not match GrLivArea,1
-1802,1st + 2nd Floor SF does not match GrLivArea,1
-1821,1st + 2nd Floor SF does not match GrLivArea,1
-1845,1st + 2nd Floor SF does not match GrLivArea,1
-1913,1st + 2nd Floor SF does not match GrLivArea,1
-2091,1st + 2nd Floor SF does not match GrLivArea,1
-2131,1st + 2nd Floor SF does not match GrLivArea,1
-2424,1st + 2nd Floor SF does not match GrLivArea,1
-2474,1st + 2nd Floor SF does not match GrLivArea,1
-2579,1st + 2nd Floor SF does not match GrLivArea,1
-2714,1st + 2nd Floor SF does not match GrLivArea,1
-2819,1st + 2nd Floor SF does not match GrLivArea,1
-2871,1st + 2nd Floor SF does not match GrLivArea,1
 2218,Basement has area but BsmtQual is missing,1
 2219,Basement has area but BsmtQual is missing,1
 2421,Pool has area but PoolQC is missing,1
