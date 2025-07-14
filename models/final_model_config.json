@@ -1,9 +1,0 @@
-{
-  "model_type": "individual",
-  "model_name": "elastic_net",
-  "cv_rmse": 0.11199957091354487,
-  "model_params": {
-    "alpha": 0.005713015086356074,
-    "l1_ratio": 0.5299239740919928
-  }
-}
