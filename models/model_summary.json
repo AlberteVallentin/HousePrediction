@@ -1,0 +1,102 @@
+{
+  "project_info": {
+    "dataset": "House Prices - Advanced Regression Techniques",
+    "target": "SalePrice (log-transformed)",
+    "features": 191,
+    "training_samples": 1458,
+    "test_samples": 1459
+  },
+  "individual_models": {
+    "Ridge_Optimized": {
+      "cv_rmse_mean": 0.12184603427711324,
+      "cv_rmse_std": 0.008911539242443495,
+      "model_type": "Ridge"
+    },
+    "Lasso_Optimized": {
+      "cv_rmse_mean": 0.11746296774746412,
+      "cv_rmse_std": 0.00816801252654284,
+      "model_type": "Lasso"
+    },
+    "ElasticNet_Optimized": {
+      "cv_rmse_mean": 0.11751777262730383,
+      "cv_rmse_std": 0.008255027737011398,
+      "model_type": "ElasticNet"
+    },
+    "RandomForest_Optimized": {
+      "cv_rmse_mean": 0.1412457683490666,
+      "cv_rmse_std": 0.00963016252777885,
+      "model_type": "RandomForestRegressor"
+    },
+    "GradientBoosting_Optimized": {
+      "cv_rmse_mean": 0.1227085362748676,
+      "cv_rmse_std": 0.01111535541668832,
+      "model_type": "GradientBoostingRegressor"
+    },
+    "XGBoost_Optimized": {
+      "cv_rmse_mean": 0.11484407306797821,
+      "cv_rmse_std": 0.010448650126373069,
+      "model_type": "XGBRegressor"
+    },
+    "CatBoost_Optimized": {
+      "cv_rmse_mean": 0.11430578072532023,
+      "cv_rmse_std": 0.011260254346747416,
+      "model_type": "CatBoostRegressor"
+    },
+    "LightGBM_Optimized": {
+      "cv_rmse_mean": 0.11717024884804532,
+      "cv_rmse_std": 0.01024766298964626,
+      "model_type": "LGBMRegressor"
+    }
+  },
+  "ensemble_models": {
+    "Simple_Ensemble": {
+      "cv_rmse_mean": 0.11166682093966233,
+      "cv_rmse_std": 0.010044172997249015,
+      "components": [
+        "CatBoost",
+        "XGBoost",
+        "LightGBM",
+        "Lasso"
+      ]
+    },
+    "Weighted_Ensemble": {
+      "cv_rmse_mean": 0.11166995745892946,
+      "cv_rmse_std": 0.010054010644236895,
+      "components": [
+        "CatBoost",
+        "XGBoost",
+        "LightGBM",
+        "Lasso"
+      ]
+    },
+    "Stacking_Ensemble": {
+      "cv_rmse_mean": 0.11136874868503796,
+      "cv_rmse_std": 0.00952304927692261,
+      "components": [
+        "CatBoost",
+        "XGBoost",
+        "LightGBM",
+        "Lasso"
+      ]
+    }
+  },
+  "final_model": {
+    "final_model_name": "Stacking_Ensemble",
+    "final_cv_rmse": 0.11136874868503796,
+    "selection_criteria": "Best cross-validation RMSE",
+    "exported_at": "2025-07-16 13:06:45.329308"
+  },
+  "performance_comparison": {
+    "Stacking_Ensemble": 0.11136874868503796,
+    "Simple_Ensemble": 0.11166682093966233,
+    "Weighted_Ensemble": 0.11166995745892946,
+    "CatBoost_Optimized": 0.11430578072532023,
+    "XGBoost_Optimized": 0.11484407306797821,
+    "LightGBM_Optimized": 0.11717024884804532,
+    "Lasso_Optimized": 0.11746296774746412,
+    "ElasticNet_Optimized": 0.11751777262730383,
+    "Ridge_Optimized": 0.12184603427711324,
+    "GradientBoosting_Optimized": 0.1227085362748676,
+    "RandomForest_Optimized": 0.1412457683490666
+  }
+}

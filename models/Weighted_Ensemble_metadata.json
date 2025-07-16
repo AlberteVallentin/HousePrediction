@@ -1,0 +1,13 @@
+{
+  "ensemble_name": "Weighted_Ensemble",
+  "cv_rmse_mean": 0.11166995745892946,
+  "cv_rmse_std": 0.010054010644236895,
+  "val_rmse": 0.11932420338347749,
+  "ensemble_type": "WeightedEnsemble",
+  "component_models": [
+    "CatBoost",
+    "XGBoost",
+    "LightGBM",
+    "Lasso"
+  ]
+}

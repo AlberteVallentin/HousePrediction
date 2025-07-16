@@ -1,0 +1,13 @@
+{
+  "ensemble_name": "Stacking_Ensemble",
+  "cv_rmse_mean": 0.11136874868503796,
+  "cv_rmse_std": 0.00952304927692261,
+  "val_rmse": 0.11758539363431687,
+  "ensemble_type": "StackingRegressor",
+  "component_models": [
+    "CatBoost",
+    "XGBoost",
+    "LightGBM",
+    "Lasso"
+  ]
+}

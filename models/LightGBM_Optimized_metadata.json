@@ -1,0 +1,17 @@
+{
+  "model_name": "LightGBM_Optimized",
+  "cv_rmse_mean": 0.11717024884804532,
+  "cv_rmse_std": 0.01024766298964626,
+  "val_rmse": null,
+  "best_params": {
+    "n_estimators": 3383,
+    "max_depth": 3,
+    "learning_rate": 0.00629854505825865,
+    "subsample": 0.6731376062274274,
+    "colsample_bytree": 0.2228861117942048,
+    "min_child_samples": 8,
+    "reg_alpha": 0.02664608385668524,
+    "reg_lambda": 3.3220327864416124
+  },
+  "model_type": "LGBMRegressor"
+}

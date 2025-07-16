@@ -11,3 +11,6 @@ __pycache__/
 extra/
 .env
 .DS_Store
+
+# Submissions
+submissions/
