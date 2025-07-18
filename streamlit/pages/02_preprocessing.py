@@ -230,8 +230,21 @@ The 'after' dataset shows zero missing values across all features.
 """)
 
 # Create before/after comparison
-if processed_data and 'train_cleaned' in processed_data:
-    before_after_plot = create_before_after_comparison(df_combined, processed_data['train_cleaned'])
+if processed_data and 'train_cleaned' in processed_data and 'test_cleaned' in processed_data:
+    # Use the cleaned datasets (preprocessing output)
+    train_cleaned_temp = processed_data['train_cleaned'].drop('SalePrice', axis=1, errors='ignore')
+    test_cleaned_temp = processed_data['test_cleaned']
+    
+    # Ensure both datasets have the same columns
+    common_columns = train_cleaned_temp.columns.intersection(test_cleaned_temp.columns)
+    train_cleaned_temp = train_cleaned_temp[common_columns]
+    test_cleaned_temp = test_cleaned_temp[common_columns]
+    
+    # Combine cleaned datasets
+    combined_cleaned_temp = pd.concat([train_cleaned_temp, test_cleaned_temp], ignore_index=True)
+    
+    
+    before_after_plot = create_before_after_comparison(df_combined, combined_cleaned_temp)
     st.plotly_chart(before_after_plot, use_container_width=True)
 
 # Section 5: Data Quality Corrections
@@ -328,6 +341,21 @@ if processed_data and 'train_cleaned' in processed_data:
 # Section 9: Interactive Data Quality Dashboard
 st.header("9. Interactive Data Quality Dashboard")
 
+# Create combined cleaned dataset for fair comparison
+combined_cleaned = None
+if processed_data and 'train_cleaned' in processed_data and 'test_cleaned' in processed_data:
+    # Use the cleaned datasets (preprocessing output)
+    train_cleaned = processed_data['train_cleaned'].drop('SalePrice', axis=1, errors='ignore')
+    test_cleaned = processed_data['test_cleaned']
+    
+    # Ensure both datasets have the same columns
+    common_columns = train_cleaned.columns.intersection(test_cleaned.columns)
+    train_cleaned = train_cleaned[common_columns]
+    test_cleaned = test_cleaned[common_columns]
+    
+    # Combine cleaned datasets
+    combined_cleaned = pd.concat([train_cleaned, test_cleaned], ignore_index=True)
+
 if processed_data and 'train_cleaned' in processed_data:
     st.markdown("""
     Interactive dashboard showing the comprehensive preprocessing pipeline results.
@@ -335,7 +363,7 @@ if processed_data and 'train_cleaned' in processed_data:
     """)
     
     # Create tabs for different quality metrics
-    tab1, tab2, tab3 = st.tabs(["Missing Values", "Data Types", "Statistical Changes"])
+    tab1, tab2 = st.tabs(["Missing Values", "Data Types"])
     
     with tab1:
         st.subheader("Missing Values Treatment Progress")
@@ -420,96 +448,41 @@ if processed_data and 'train_cleaned' in processed_data:
                      height=400)
         st.plotly_chart(fig, use_container_width=True)
     
-    with tab3:
-        st.subheader("Statistical Summary Changes")
-        
-        # Compare numerical feature statistics
-        numerical_cols = df_combined.select_dtypes(include=[np.number]).columns
-        if len(numerical_cols) > 0:
-            # Select a few key numerical features for comparison
-            key_features = ['SalePrice', 'LotArea', 'GrLivArea', 'OverallQual']
-            available_features = [col for col in key_features if col in numerical_cols]
-            
-            if available_features:
-                selected_feature = st.selectbox(
-                    "Select feature for statistical comparison:",
-                    available_features
-                )
-                
-                # Calculate statistics
-                before_stats = df_combined[selected_feature].describe()
-                after_stats = processed_data['train_cleaned'][selected_feature].describe()
-                
-                # Create comparison table
-                comparison_stats = pd.DataFrame({
-                    'Before': before_stats,
-                    'After': after_stats,
-                    'Change': after_stats - before_stats
-                })
-                
-                st.dataframe(comparison_stats, use_container_width=True)
-                
-                # Distribution comparison
-                fig = make_subplots(
-                    rows=1, cols=2,
-                    subplot_titles=('Before Processing', 'After Processing')
-                )
-                
-                fig.add_trace(
-                    go.Histogram(
-                        x=df_combined[selected_feature].dropna(),
-                        nbinsx=30,
-                        name='Before',
-                        marker_color='red',
-                        opacity=0.7
-                    ),
-                    row=1, col=1
-                )
-                
-                fig.add_trace(
-                    go.Histogram(
-                        x=processed_data['train_cleaned'][selected_feature].dropna(),
-                        nbinsx=30,
-                        name='After',
-                        marker_color='green',
-                        opacity=0.7
-                    ),
-                    row=1, col=2
-                )
-                
-                fig.update_layout(
-                    title=f'Distribution Comparison: {selected_feature}',
-                    height=400,
-                    showlegend=False
-                )
-                st.plotly_chart(fig, use_container_width=True)
 else:
-    st.info("Interactive dashboard not available - processed data not found.")
+    st.info("Processed data comparison requires both original and processed datasets to be loaded.")
 
 # Section 10: Key Insights
 st.header("10. Key Insights")
 
 st.markdown("""
-**Preprocessing Approach:**
-- **Data Quality**: Systematic approach to handle missing values and data inconsistencies
-- **Feature Integrity**: Feature preservation while optimizing data types
-- **Outlier Handling**: Identification and appropriate treatment of outliers
-- **Consistency**: Ensuring consistent preprocessing across train/test sets
+**Preprocessing Results:**
+- **Data Quality Issues Resolved**: 34 specific issues across 31 houses corrected
+- **Outlier Removal**: 2 problematic properties (IDs 524, 1299) removed from training set
+- **Missing Value Treatment**: 7,829 missing values addressed using domain-specific strategies
+- **Type Corrections**: 3 ordinal features (OverallQual, OverallCond, MSSubClass) properly classified
 
-**Domain Knowledge Integration:**
-- Missing values treated based on real estate domain understanding
-- Quality ratings handled as ordinal relationships
-- Architectural features processed appropriately
+**Specific Corrections Applied:**
+- **Timeline Issues**: Fixed 1 remodel-before-construction case and 1 garage typo (2207→2007)
+- **Feature Consistency**: Corrected 3 houses with PoolArea>0 but missing PoolQC
+- **Structural Logic**: Fixed 3 houses with KitchenAbvGr=0 but existing KitchenQual
+- **Data Quality**: Resolved basement area without quality ratings (2 cases)
 
-**Model Readiness:**
-- Missing value treatment enables algorithm training
-- Data type optimization improves numerical stability
-- Consistent feature sets support robust performance
-- Quality corrections prevent erroneous pattern learning
+**Three-Tier Missing Value Strategy:**
+- **Architectural Absence**: PoolQC, MiscFeature, Alley, Fence filled with 'None' (represents absence)
+- **Domain-Specific**: LotFrontage filled with neighborhood medians (real estate expertise)
+- **Statistical**: Remaining features filled with mode/median based on data type
 
-**Next Steps:**
-The processed dataset can proceed to feature engineering, where new predictive features
-will be created and existing features will be encoded for machine learning algorithms.
+**Final Dataset State:**
+- **Training Samples**: 1,458 (removed 2 outliers from original 1,460)
+- **Missing Values**: 0 across all features (100% complete)
+- **Data Types**: Optimized from 11 float features to 1 (improved memory efficiency)
+- **Consistency**: Train/test preprocessing pipeline maintains identical feature structure
+
+**Model Readiness Achieved:**
+- Zero missing values enable all ML algorithms
+- Consistent data types prevent training/inference mismatches
+- Domain-appropriate missing value treatment preserves real estate business logic
+- Quality corrections eliminate erroneous pattern learning opportunities
 """)
 
 # Footer

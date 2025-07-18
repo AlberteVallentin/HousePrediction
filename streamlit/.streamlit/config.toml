@@ -1,0 +1,35 @@
+[theme]
+# Custom theme for House Price Prediction App
+primaryColor = "#1f77b4"          # Blue primary color (matches our plots)
+backgroundColor = "#ffffff"        # White background
+secondaryBackgroundColor = "#f0f2f6"  # Light gray for sidebars/containers
+textColor = "#262730"             # Dark text for readability
+font = "sans serif"               # Clean, professional font
+
+[client]
+# Client-side configuration
+caching = true
+# Display toolbar in development
+toolbarMode = "auto"
+# Show running indicator
+showErrorDetails = true
+
+[runner]
+# Code execution configuration
+magicEnabled = true               # Enable magic commands
+installTracer = false            # Disable install tracer for cleaner output
+fixMatplotlib = true             # Fix matplotlib backend issues
+postScriptGC = true              # Run garbage collection after scripts
+fastReruns = true                # Enable fast reruns
+enforceSerializableSessionState = false  # Allow complex objects in session state
+
+[logger]
+# Logging configuration
+level = "info"                   # Log level (debug, info, warning, error)
+messageFormat = "%(asctime)s %(message)s"
+
+[deprecation]
+# Handle deprecation warnings
+showfileUploaderEncoding = false
+showPyplotGlobalUse = false
+

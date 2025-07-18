@@ -515,40 +515,40 @@ else:
 
 st.markdown("""
 **Data Quality:**
-- Dataset structure and completeness varies by feature
-- Missing values are present in several features
-- Data quality issues may exist and require investigation
-- Dataset integrity should be verified before analysis
+- Dataset contains 1,460 training samples and 1,459 test samples with no duplicates
+- 34 data quality issues identified across 31 houses requiring preprocessing attention
+- Critical outliers: Properties 524 and 1299 with luxury features but partial sale prices
+- 2 problematic outliers with >4000 sqft living area but <$200k price (likely incomplete sales)
 
 **Target Variable (SalePrice):**
-- Distribution characteristics should be analyzed
-- Price range and variability depend on the specific dataset
-- Skewness analysis would inform transformation decisions
-- Outlier detection requires statistical analysis
+- Strong right-skewed distribution with skewness = 1.88
+- Price range: $34,900 - $755,000 (mean: $180,921, median: $163,000)
+- Log transformation improves normality and correlation patterns
+- 61 high-price outliers (>$340k) represent 4.2% of properties
 
 **Feature Relationships:**
-- Quality ratings are typically important predictors
-- Living area features often correlate with price
-- Garage features may impact property values
-- Actual correlations depend on the specific dataset
+- OverallQual is strongest predictor (correlation: 0.79 with SalePrice)
+- GrLivArea (0.71) and garage features (0.62-0.64) are key drivers
+- High multicollinearity: GarageCars vs GarageArea (0.882), GrLivArea vs TotRmsAbvGrd (0.825)
+- Negative correlations: KitchenAbvGr (-0.14) and EnclosedPorch (-0.13)
 
 **Neighborhood Insights:**
-- Price variation across neighborhoods depends on local market
-- Premium neighborhoods would be identified through data analysis
-- Market segmentation opportunities exist in real estate
-- Construction era impact requires temporal analysis
+- 25 distinct neighborhoods with significant price variation
+- Premium neighborhoods command $100k+ premiums over average
+- NAmes is most common neighborhood (443 houses)
+- Location effects can double or halve property values
 
 **Quality Impact:**
-- Quality improvements typically increase property value
-- Actual impact percentages depend on market conditions
-- Quality ratings are generally strong predictors
-- Price variability patterns require statistical analysis
+- Quality ratings show clear step-wise price increases
+- Excellent quality homes cost significantly more than average quality
+- OverallQual, ExterQual, and KitchenQual are key quality predictors
+- Quality beats size as primary value driver
 
 **Preprocessing Implications:**
-- Transformation needs depend on data distribution
-- Missing value treatment requires domain expertise
-- Feature engineering opportunities exist in real estate data
-- Outlier handling requires careful investigation
+- 3 misclassified ordinal features need type correction (OverallQual, OverallCond, MSSubClass)
+- Missing values concentrated in luxury features (PoolQC 99.7%, MiscFeature 96.4%)
+- Log transformation recommended for skewed numerical features
+- Feature selection needed for highly correlated pairs to reduce multicollinearity
 """)
 
 # Footer
