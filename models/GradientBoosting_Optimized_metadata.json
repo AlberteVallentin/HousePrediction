@@ -1,0 +1,13 @@
+{
+  "model_name": "GradientBoosting_Optimized",
+  "cv_rmse_mean": 0.1227085362748676,
+  "cv_rmse_std": 0.01111535541668832,
+  "val_rmse": null,
+  "best_params": {
+    "n_estimators": 145,
+    "learning_rate": 0.14932721829839746,
+    "max_depth": 3,
+    "subsample": 0.8292219082426387
+  },
+  "model_type": "GradientBoostingRegressor"
+}

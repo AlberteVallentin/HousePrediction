@@ -1,0 +1,35 @@
+Id,Issue,IssueCount
+1877,Remodel date before construction year,1
+524,Remodel date is after the house was sold,1
+2296,Remodel date is after the house was sold,1
+2550,Remodel date is after the house was sold,4
+2550,Construction year is after the house was sold,4
+30,Garage built before the house,1
+94,Garage built before the house,1
+325,Garage built before the house,1
+601,Garage built before the house,1
+737,Garage built before the house,1
+1104,Garage built before the house,1
+1377,Garage built before the house,1
+1415,Garage built before the house,1
+1419,Garage built before the house,1
+1522,Garage built before the house,1
+1577,Garage built before the house,1
+1806,Garage built before the house,1
+1841,Garage built before the house,1
+1896,Garage built before the house,1
+1898,Garage built before the house,1
+2123,Garage built before the house,1
+2264,Garage built before the house,1
+2510,Garage built before the house,1
+2550,Garage built after the house was sold,4
+2593,Garage built after the house was sold,1
+2218,Basement has area but BsmtQual is missing,1
+2219,Basement has area but BsmtQual is missing,1
+2421,Pool has area but PoolQC is missing,1
+2504,Pool has area but PoolQC is missing,1
+2600,Pool has area but PoolQC is missing,1
+2550,MiscVal > 0 but MiscFeature is missing,4
+955,No kitchen above grade,1
+2588,No kitchen above grade,1
+2860,No kitchen above grade,1

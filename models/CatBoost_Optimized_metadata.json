@@ -1,0 +1,12 @@
+{
+  "model_name": "CatBoost_Optimized",
+  "cv_rmse_mean": 0.11430578072532023,
+  "cv_rmse_std": 0.011260254346747416,
+  "val_rmse": null,
+  "best_params": {
+    "iterations": 7796,
+    "learning_rate": 0.008019557229247127,
+    "depth": 5
+  },
+  "model_type": "CatBoostRegressor"
+}

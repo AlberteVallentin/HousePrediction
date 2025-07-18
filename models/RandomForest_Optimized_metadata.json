@@ -1,0 +1,14 @@
+{
+  "model_name": "RandomForest_Optimized",
+  "cv_rmse_mean": 0.1412457683490666,
+  "cv_rmse_std": 0.00963016252777885,
+  "val_rmse": null,
+  "best_params": {
+    "n_estimators": 111,
+    "max_depth": 16,
+    "min_samples_split": 3,
+    "min_samples_leaf": 1,
+    "max_features": null
+  },
+  "model_type": "RandomForestRegressor"
+}

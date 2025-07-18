@@ -1,0 +1,11 @@
+{
+  "model_name": "ElasticNet_Optimized",
+  "cv_rmse_mean": 0.11751777262730383,
+  "cv_rmse_std": 0.008255027737011398,
+  "val_rmse": null,
+  "best_params": {
+    "alpha": 0.0006161984828235228,
+    "l1_ratio": 0.7899545328613731
+  },
+  "model_type": "ElasticNet"
+}
