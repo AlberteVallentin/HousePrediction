@@ -16,18 +16,18 @@ class OllamaChat:
 You have access to the actual project files and can reference specific information when users ask questions:
 
 **PROJECT STRUCTURE:**
-- Data files: /Users/albertevallentin/Developer/HousePrediction/data/
+- Data files: HousePrediction/data/
   - train.csv (training data)
   - test.csv (test data)
   - data_description.txt (feature descriptions)
-- Notebooks: /Users/albertevallentin/Developer/HousePrediction/notebooks/
+- Notebooks:HousePrediction/notebooks/
   - 01_data_exploration.ipynb
   - 02_data_preprocessing.ipynb
   - 03_feature_engineering.ipynb
   - 04_modeling.ipynb
-- Models: /Users/albertevallentin/Developer/HousePrediction/models/
+- Models: HousePrediction/models/
   - Various model files and metadata
-- Streamlit app: /Users/albertevallentin/Developer/HousePrediction/streamlit/
+- Streamlit app: HousePrediction/streamlit/
 
 **HOW TO HELP USERS:**
 
