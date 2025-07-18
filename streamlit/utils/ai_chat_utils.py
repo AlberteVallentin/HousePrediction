@@ -119,9 +119,9 @@ class OllamaChat:
         """Load feature descriptions from data_description.txt."""
         # Try correct paths based on project structure
         possible_paths = [
-            'data/data_description.txt',
-            'data/raw/data_description.txt',
-            'docs/data_description.txt'
+            'docs/data_description.txt',    # From notebooks: ../docs/data_description.txt
+            'data/data_description.txt',    # Alternative location
+            'data/raw/data_description.txt' # Another possible location
         ]
         
         for path_suffix in possible_paths:
@@ -129,18 +129,20 @@ class OllamaChat:
                 desc_path = os.path.join(base_path, path_suffix)
                 if os.path.exists(desc_path):
                     with open(desc_path, 'r', encoding='utf-8') as f:
-                        return f.read()
+                        content = f.read()
+                        return content[:2000] + "..." if len(content) > 2000 else content  # Truncate if too long
             except Exception as e:
                 continue
         return ""
     
     def _load_notebook_summary(self, base_path: str) -> str:
         """Load notebook summary with key insights."""
-        # Try to load from project files first
+        # Try to load from project files first  
         possible_paths = [
-            'project_summary.md',
-            'notebook_summary.md',
-            'docs/summary.md'
+            'project_summary.md',           # Root level
+            'README.md',                    # Common location
+            'docs/project_summary.md',      # Docs folder
+            'docs/README.md'                # Docs folder
         ]
         
         for path_suffix in possible_paths:
@@ -148,7 +150,8 @@ class OllamaChat:
                 summary_path = os.path.join(base_path, path_suffix)
                 if os.path.exists(summary_path):
                     with open(summary_path, 'r', encoding='utf-8') as f:
-                        return f.read()
+                        content = f.read()
+                        return content[:3000] + "..." if len(content) > 3000 else content  # Truncate if too long
             except Exception as e:
                 continue
         
