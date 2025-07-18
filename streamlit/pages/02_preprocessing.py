@@ -120,8 +120,9 @@ Two problematic outliers were identified in the analysis:
 - **ID 524**: 4,676 sqft house sold for $184,750 (OverallQual=10)
 - **ID 1299**: 5,642 sqft house sold for $160,000 (OverallQual=10)
 
-These represent data quality issues where luxury homes with maximum quality ratings 
-were sold at prices inconsistent with their characteristics.
+These represent data quality issues - luxury homes with maximum quality ratings 
+sold at prices inconsistent with their characteristics. They appear to be 
+partial sales of incomplete luxury properties.
 """)
 
 # Enhanced Outlier Analysis
@@ -133,22 +134,40 @@ if 'SalePrice' in df_train.columns and 'GrLivArea' in df_train.columns:
     This enhanced visualization includes scatter plots, box plots, and impact analysis.
     """)
     
-    # Create enhanced outlier plot
-    outlier_plot = create_enhanced_outlier_plot(df_train, 'GrLivArea', 'SalePrice', [524, 1299])
+    # Create enhanced outlier plot with specific IDs
+    outlier_plot = create_enhanced_outlier_plot(df_train, 'GrLivArea', 'SalePrice', outlier_ids=[524, 1299])
     st.plotly_chart(outlier_plot, use_container_width=True)
     
     # Show outlier details
-    st.subheader("Outlier Details")
+    st.subheader("Outlier Analysis Legend")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("🔵 **Normal Points**")
+        st.write("Properties within normal range")
+        
+    with col2:
+        st.markdown("🔴 **IQR Outliers**")
+        st.write("Statistical outliers detected by IQR method")
+        
+    with col3:
+        st.markdown("🟡 **Removed Outliers**")
+        st.write("Data quality issues removed from dataset")
+    
+    st.subheader("Removed Outlier Details")
     outlier_details = {
         'Property ID': [524, 1299],
         'Living Area (sqft)': [4676, 5642],
         'Sale Price ($)': [184750, 160000],
         'Overall Quality': [10, 10],
-        'Issue': ['Luxury home sold below market', 'Very large home sold below market']
+        'Issue': ['Partial sale of incomplete luxury property', 'Partial sale of incomplete luxury property']
     }
     
     outlier_df = pd.DataFrame(outlier_details)
     st.dataframe(outlier_df, use_container_width=True)
+    
+    st.info("💡 **Key Insight**: The gold diamond markers show the specific outliers we removed due to data quality issues. These are different from the red statistical outliers detected by the IQR method.")
 else:
     st.info("Enhanced outlier analysis not available - required columns not found.")
 
@@ -162,10 +181,11 @@ with col1:
     st.metric("Samples Removed", "2 (0.14%)")
 
 with col2:
-    st.markdown("**Minimal Impact on Distribution:**")
-    st.text("• Mean price: $180,921 → $180,933")
-    st.text("• Median price: $163,000 → $163,000")
-    st.text("• Skewness: 1.8829 → 1.8813")
+    st.markdown("**Impact Assessment:**")
+    st.write("• Minimal impact on overall distribution")
+    st.write("• Removed problematic data quality issues")
+    st.write("• Preserved 99.86% of training data")
+    st.write("• Improved model reliability")
 
 # Section 4: Missing Value Treatment
 st.header("4. Missing Value Treatment")

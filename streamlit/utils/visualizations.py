@@ -685,22 +685,32 @@ def create_enhanced_outlier_plot(df, x_col, y_col, outlier_ids=None):
     Q3_y = df[y_col].quantile(0.75)
     IQR_y = Q3_y - Q1_y
     
-    # Define outlier conditions
-    outlier_condition = (
+    # Define IQR outlier conditions
+    iqr_outlier_condition = (
         (df[x_col] < Q1_x - 1.5 * IQR_x) | (df[x_col] > Q3_x + 1.5 * IQR_x) |
         (df[y_col] < Q1_y - 1.5 * IQR_y) | (df[y_col] > Q3_y + 1.5 * IQR_y)
     )
     
-    # If specific outlier IDs are provided, highlight them
+    # Define specific outlier conditions (data quality issues)
+    specific_outlier_condition = pd.Series([False] * len(df), index=df.index)
     if outlier_ids:
-        outlier_condition = df.index.isin(outlier_ids)
+        # Check if 'Id' column exists and use it, otherwise use index
+        if 'Id' in df.columns:
+            specific_outlier_condition = df['Id'].isin(outlier_ids)
+        else:
+            specific_outlier_condition = df.index.isin(outlier_ids)
+    
+    # Create different point categories
+    normal_points = ~iqr_outlier_condition & ~specific_outlier_condition
+    iqr_only_outliers = iqr_outlier_condition & ~specific_outlier_condition
+    specific_outliers = specific_outlier_condition
     
     # 1. Scatter plot
     # Normal points
     fig.add_trace(
         go.Scatter(
-            x=df[x_col][~outlier_condition],
-            y=df[y_col][~outlier_condition],
+            x=df[x_col][normal_points],
+            y=df[y_col][normal_points],
             mode='markers',
             name='Normal Points',
             marker=dict(color='blue', size=4, opacity=0.6)
@@ -708,15 +718,28 @@ def create_enhanced_outlier_plot(df, x_col, y_col, outlier_ids=None):
         row=1, col=1
     )
     
-    # Outlier points
-    if outlier_condition.any():
+    # IQR outliers (statistical outliers)
+    if iqr_only_outliers.any():
         fig.add_trace(
             go.Scatter(
-                x=df[x_col][outlier_condition],
-                y=df[y_col][outlier_condition],
+                x=df[x_col][iqr_only_outliers],
+                y=df[y_col][iqr_only_outliers],
                 mode='markers',
-                name='Outliers',
+                name='IQR Outliers',
                 marker=dict(color='red', size=8, opacity=0.8)
+            ),
+            row=1, col=1
+        )
+    
+    # Specific outliers (data quality issues - removed)
+    if specific_outliers.any():
+        fig.add_trace(
+            go.Scatter(
+                x=df[x_col][specific_outliers],
+                y=df[y_col][specific_outliers],
+                mode='markers',
+                name='Removed Outliers',
+                marker=dict(color='gold', size=12, opacity=0.9, symbol='diamond')
             ),
             row=1, col=1
         )
@@ -742,14 +765,15 @@ def create_enhanced_outlier_plot(df, x_col, y_col, outlier_ids=None):
     )
     
     # 4. Outlier impact analysis
-    if outlier_condition.any():
+    all_outliers = iqr_outlier_condition | specific_outlier_condition
+    if all_outliers.any():
         impact_data = {
             'Metric': ['Mean (with outliers)', 'Mean (without outliers)', 
                       'Median (with outliers)', 'Median (without outliers)'],
-            'X Variable': [df[x_col].mean(), df[x_col][~outlier_condition].mean(),
-                          df[x_col].median(), df[x_col][~outlier_condition].median()],
-            'Y Variable': [df[y_col].mean(), df[y_col][~outlier_condition].mean(),
-                          df[y_col].median(), df[y_col][~outlier_condition].median()]
+            'X Variable': [df[x_col].mean(), df[x_col][~all_outliers].mean(),
+                          df[x_col].median(), df[x_col][~all_outliers].median()],
+            'Y Variable': [df[y_col].mean(), df[y_col][~all_outliers].mean(),
+                          df[y_col].median(), df[y_col][~all_outliers].median()]
         }
         
         fig.add_trace(
