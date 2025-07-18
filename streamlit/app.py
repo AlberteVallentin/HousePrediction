@@ -5,6 +5,7 @@ import os
 # Add the parent directory to the Python path to import notebooks utilities
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+
 from notebooks.data_description_parser import load_feature_descriptions
 
 # Page configuration
