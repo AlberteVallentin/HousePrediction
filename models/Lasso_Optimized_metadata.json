@@ -1,10 +1,10 @@
 {
   "model_name": "Lasso_Optimized",
-  "cv_rmse_mean": 0.11746296774746412,
-  "cv_rmse_std": 0.00816801252654284,
+  "cv_rmse_mean": 0.11747120578345575,
+  "cv_rmse_std": 0.008152430024621744,
   "val_rmse": null,
   "best_params": {
-    "alpha": 0.00047058865393524485
+    "alpha": 0.0005111967109438194
   },
   "model_type": "Lasso"
 }

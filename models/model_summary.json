@@ -8,50 +8,50 @@
   },
   "individual_models": {
     "Ridge_Optimized": {
-      "cv_rmse_mean": 0.12184603427711324,
-      "cv_rmse_std": 0.008911539242443495,
+      "cv_rmse_mean": 0.12182936770965877,
+      "cv_rmse_std": 0.008907812295912435,
       "model_type": "Ridge"
     },
     "Lasso_Optimized": {
-      "cv_rmse_mean": 0.11746296774746412,
-      "cv_rmse_std": 0.00816801252654284,
+      "cv_rmse_mean": 0.11747120578345575,
+      "cv_rmse_std": 0.008152430024621744,
       "model_type": "Lasso"
     },
     "ElasticNet_Optimized": {
-      "cv_rmse_mean": 0.11751777262730383,
-      "cv_rmse_std": 0.008255027737011398,
+      "cv_rmse_mean": 0.11761292982683243,
+      "cv_rmse_std": 0.008264677994362923,
       "model_type": "ElasticNet"
     },
     "RandomForest_Optimized": {
-      "cv_rmse_mean": 0.1412457683490666,
-      "cv_rmse_std": 0.00963016252777885,
+      "cv_rmse_mean": 0.14032678939574014,
+      "cv_rmse_std": 0.014255909902582638,
       "model_type": "RandomForestRegressor"
     },
     "GradientBoosting_Optimized": {
-      "cv_rmse_mean": 0.1227085362748676,
-      "cv_rmse_std": 0.01111535541668832,
+      "cv_rmse_mean": 0.12357350552146229,
+      "cv_rmse_std": 0.010247341354904379,
       "model_type": "GradientBoostingRegressor"
     },
     "XGBoost_Optimized": {
-      "cv_rmse_mean": 0.11484407306797821,
-      "cv_rmse_std": 0.010448650126373069,
+      "cv_rmse_mean": 0.11527723528764558,
+      "cv_rmse_std": 0.010627886364917608,
       "model_type": "XGBRegressor"
     },
     "CatBoost_Optimized": {
-      "cv_rmse_mean": 0.11430578072532023,
-      "cv_rmse_std": 0.011260254346747416,
+      "cv_rmse_mean": 0.11431391461914689,
+      "cv_rmse_std": 0.011597485763748765,
       "model_type": "CatBoostRegressor"
     },
     "LightGBM_Optimized": {
-      "cv_rmse_mean": 0.11717024884804532,
-      "cv_rmse_std": 0.01024766298964626,
+      "cv_rmse_mean": 0.11842023533871311,
+      "cv_rmse_std": 0.01242993883533921,
       "model_type": "LGBMRegressor"
     }
   },
   "ensemble_models": {
     "Simple_Ensemble": {
-      "cv_rmse_mean": 0.11166682093966233,
-      "cv_rmse_std": 0.010044172997249015,
+      "cv_rmse_mean": 0.11144872216923263,
+      "cv_rmse_std": 0.009785489110153995,
       "components": [
         "CatBoost",
         "XGBoost",
@@ -60,8 +60,8 @@
       ]
     },
     "Weighted_Ensemble": {
-      "cv_rmse_mean": 0.11166995745892946,
-      "cv_rmse_std": 0.010054010644236895,
+      "cv_rmse_mean": 0.11142358562020896,
+      "cv_rmse_std": 0.009804033431536224,
       "components": [
         "CatBoost",
         "XGBoost",
@@ -70,8 +70,8 @@
       ]
     },
     "Stacking_Ensemble": {
-      "cv_rmse_mean": 0.11136874868503796,
-      "cv_rmse_std": 0.00952304927692261,
+      "cv_rmse_mean": 0.11138745912255543,
+      "cv_rmse_std": 0.00969855789894402,
       "components": [
         "CatBoost",
         "XGBoost",
@@ -82,21 +82,21 @@
   },
   "final_model": {
     "final_model_name": "Stacking_Ensemble",
-    "final_cv_rmse": 0.11136874868503796,
+    "final_cv_rmse": 0.11138745912255543,
     "selection_criteria": "Best cross-validation RMSE",
-    "exported_at": "2025-07-16 13:06:45.329308"
+    "exported_at": "2025-07-19 14:01:56.127623"
   },
   "performance_comparison": {
-    "Stacking_Ensemble": 0.11136874868503796,
-    "Simple_Ensemble": 0.11166682093966233,
-    "Weighted_Ensemble": 0.11166995745892946,
-    "CatBoost_Optimized": 0.11430578072532023,
-    "XGBoost_Optimized": 0.11484407306797821,
-    "LightGBM_Optimized": 0.11717024884804532,
-    "Lasso_Optimized": 0.11746296774746412,
-    "ElasticNet_Optimized": 0.11751777262730383,
-    "Ridge_Optimized": 0.12184603427711324,
-    "GradientBoosting_Optimized": 0.1227085362748676,
-    "RandomForest_Optimized": 0.1412457683490666
+    "Stacking_Ensemble": 0.11138745912255543,
+    "Weighted_Ensemble": 0.11142358562020896,
+    "Simple_Ensemble": 0.11144872216923263,
+    "CatBoost_Optimized": 0.11431391461914689,
+    "XGBoost_Optimized": 0.11527723528764558,
+    "Lasso_Optimized": 0.11747120578345575,
+    "ElasticNet_Optimized": 0.11761292982683243,
+    "LightGBM_Optimized": 0.11842023533871311,
+    "Ridge_Optimized": 0.12182936770965877,
+    "GradientBoosting_Optimized": 0.12357350552146229,
+    "RandomForest_Optimized": 0.14032678939574014
   }
 }

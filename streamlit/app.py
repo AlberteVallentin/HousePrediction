@@ -459,7 +459,7 @@ st.markdown('<h3 class="section-header">Technical Implementation</h3>', unsafe_a
 
 implementation_details = """
 **Technologies Used:**
-- **Python 3.8+** for data analysis and modeling
+- **Python 3.11+** for data analysis and modeling
 - **Pandas & NumPy** for data manipulation
 - **Scikit-learn** for machine learning algorithms
 - **Plotly** for interactive visualizations

@@ -1,10 +1,10 @@
 {
   "model_name": "Ridge_Optimized",
-  "cv_rmse_mean": 0.12184603427711324,
-  "cv_rmse_std": 0.008911539242443495,
+  "cv_rmse_mean": 0.12182936770965877,
+  "cv_rmse_std": 0.008907812295912435,
   "val_rmse": null,
   "best_params": {
-    "alpha": 0.9858631436199221
+    "alpha": 0.9953273310553048
   },
   "model_type": "Ridge"
 }

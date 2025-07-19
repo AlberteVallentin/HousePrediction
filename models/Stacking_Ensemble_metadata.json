@@ -1,8 +1,8 @@
 {
   "ensemble_name": "Stacking_Ensemble",
-  "cv_rmse_mean": 0.11136874868503796,
-  "cv_rmse_std": 0.00952304927692261,
-  "val_rmse": 0.11758539363431687,
+  "cv_rmse_mean": 0.11138745912255543,
+  "cv_rmse_std": 0.00969855789894402,
+  "val_rmse": 0.11687134184122704,
   "ensemble_type": "StackingRegressor",
   "component_models": [
     "CatBoost",
