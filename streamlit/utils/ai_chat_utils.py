@@ -54,11 +54,11 @@ class OllamaChat:
     
     def _load_ollama_context(self, base_path: str) -> str:
         """Load dedicated Ollama context file with comprehensive project information."""
-        # Try to find ollama_context.md in project root
+        # Try to find ollama_context.md - check utils directory first
         possible_paths = [
+            'ollama_context.md',                # In same directory as this file (utils/)
             '../../ollama_context.md',          # From streamlit/utils/
             '../ollama_context.md',             # From streamlit/
-            'ollama_context.md',                # From project root
             '../../docs/ollama_context.md',     # Alternative in docs
             '../docs/ollama_context.md',        # Alternative in docs
             'docs/ollama_context.md'            # Alternative in docs
@@ -66,7 +66,12 @@ class OllamaChat:
         
         for path_suffix in possible_paths:
             try:
-                context_path = os.path.join(base_path, path_suffix)
+                # Handle the first path specially - it's relative to current file directory
+                if path_suffix == 'ollama_context.md':
+                    context_path = os.path.join(os.path.dirname(__file__), path_suffix)
+                else:
+                    context_path = os.path.join(base_path, path_suffix)
+                
                 if os.path.exists(context_path):
                     with open(context_path, 'r', encoding='utf-8') as f:
                         content = f.read()
