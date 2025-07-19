@@ -1,6 +1,6 @@
 {
   "final_model_name": "Stacking_Ensemble",
-  "final_cv_rmse": 0.11136874868503796,
+  "final_cv_rmse": 0.11138745912255543,
   "selection_criteria": "Best cross-validation RMSE",
-  "exported_at": "2025-07-16 13:06:45.329308"
+  "exported_at": "2025-07-19 14:01:56.127623"
 }

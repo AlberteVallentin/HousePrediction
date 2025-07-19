@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import streamlit as st
 import os
 import sys
@@ -38,11 +37,27 @@ def load_processed_data():
             'test_cleaned': 'test_cleaned.csv'
         }
         
+        # Define custom NA values (exclude "None" for cleaned files)
+        # Standard pandas NA values
+        STR_NA_VALUES = ['', '#N/A', '#N/A N/A', '#NA', '-1.#IND', '-1.#QNAN', '-NaN', '-nan',
+                        '1.#IND', '1.#QNAN', '<NA>', 'N/A', 'NA', 'NULL', 'NaN', 'None', 'n/a',
+                        'nan', 'null']
+        
+        # Remove "None" from pandas NA values to preserve it as string
+        custom_na_values = {k for k in STR_NA_VALUES if k != "None"}
+        
         data = {}
         for key, filename in files.items():
             file_path = os.path.join(processed_path, filename)
             if os.path.exists(file_path):
-                data[key] = pd.read_csv(file_path)
+                # For cleaned datasets, preserve "None" as string
+                if 'cleaned' in filename:
+                    data[key] = pd.read_csv(file_path, 
+                                          keep_default_na=False,
+                                          na_values=custom_na_values)
+                else:
+                    # For final processed datasets, use standard loading
+                    data[key] = pd.read_csv(file_path)
         
         return data
     except Exception as e:

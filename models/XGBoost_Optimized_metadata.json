@@ -1,13 +1,13 @@
 {
   "model_name": "XGBoost_Optimized",
-  "cv_rmse_mean": 0.11484407306797821,
-  "cv_rmse_std": 0.010448650126373069,
+  "cv_rmse_mean": 0.11527723528764558,
+  "cv_rmse_std": 0.010627886364917608,
   "val_rmse": null,
   "best_params": {
-    "n_estimators": 3584,
-    "learning_rate": 0.005654997811285728,
-    "colsample_bytree": 0.26496221177384605,
-    "subsample": 0.40158588642059856,
+    "n_estimators": 2530,
+    "learning_rate": 0.006402875308135636,
+    "colsample_bytree": 0.31930348434739203,
+    "subsample": 0.45267390440497246,
     "min_child_weight": 5
   },
   "model_type": "XGBRegressor"

@@ -1,17 +1,17 @@
 {
   "model_name": "LightGBM_Optimized",
-  "cv_rmse_mean": 0.11717024884804532,
-  "cv_rmse_std": 0.01024766298964626,
+  "cv_rmse_mean": 0.11842023533871311,
+  "cv_rmse_std": 0.01242993883533921,
   "val_rmse": null,
   "best_params": {
-    "n_estimators": 3383,
-    "max_depth": 3,
-    "learning_rate": 0.00629854505825865,
-    "subsample": 0.6731376062274274,
-    "colsample_bytree": 0.2228861117942048,
-    "min_child_samples": 8,
-    "reg_alpha": 0.02664608385668524,
-    "reg_lambda": 3.3220327864416124
+    "n_estimators": 1561,
+    "max_depth": 5,
+    "learning_rate": 0.013952806498029331,
+    "subsample": 0.7106951366059711,
+    "colsample_bytree": 0.2648128494057447,
+    "min_child_samples": 14,
+    "reg_alpha": 0.10953389228976958,
+    "reg_lambda": 0.10502368343896333
   },
   "model_type": "LGBMRegressor"
 }

@@ -1,8 +1,8 @@
 {
   "ensemble_name": "Simple_Ensemble",
-  "cv_rmse_mean": 0.11166682093966233,
-  "cv_rmse_std": 0.010044172997249015,
-  "val_rmse": 0.11929502417355495,
+  "cv_rmse_mean": 0.11144872216923263,
+  "cv_rmse_std": 0.009785489110153995,
+  "val_rmse": 0.1167207866538282,
   "ensemble_type": "SimpleEnsemble",
   "component_models": [
     "CatBoost",

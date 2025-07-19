@@ -625,7 +625,7 @@ def create_before_after_comparison(before_df, after_df, metric_name="Data Qualit
     before_missing = before_df.isnull().sum()
     after_missing = after_df.isnull().sum()
     
-    # Get features that had missing values
+    # Get features that had missing values in the original dataset
     missing_features = before_missing[before_missing > 0].index.tolist()
     
     if missing_features:
@@ -641,11 +641,19 @@ def create_before_after_comparison(before_df, after_df, metric_name="Data Qualit
             row=1, col=1
         )
         
-        # After
+        # After - get actual missing values from processed dataset
+        # Some features may still exist in after_df, others may not
+        after_values = []
+        for feature in missing_features:
+            if feature in after_df.columns:
+                after_values.append(after_missing[feature])
+            else:
+                after_values.append(0)  # Feature doesn't exist in processed data
+        
         fig.add_trace(
             go.Bar(
                 x=missing_features,
-                y=after_missing[missing_features],
+                y=after_values,
                 name='After',
                 marker_color='green',
                 opacity=0.7
