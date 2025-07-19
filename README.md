@@ -217,10 +217,12 @@ jupyter notebook
 
 ```bash
 # With uv
+cd streamlit
 uv run streamlit run app.py
 
 # With conda
 conda activate houseprediction
+cd streamlit
 streamlit run app.py
 ```
 
