@@ -53,6 +53,7 @@ Combining multiple machine learning approaches will achieve superior prediction 
 
 ## Dataset Information
 
+-**Link to Dataset** https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data
 - **Training Samples:** 1,458 properties (after preprocessing)
 - **Test Samples:** 1,459 properties
 - **Price Range:** $47,690 - $701,555
