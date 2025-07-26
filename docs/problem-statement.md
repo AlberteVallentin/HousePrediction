@@ -42,7 +42,7 @@ Combining multiple machine learning approaches will achieve superior prediction 
 - **Project Title:** Intelligent House Price Prediction System
 - **Team Members:** Alberte Mary Wahlstrøm Vallentin
 - **Course:** Business Intelligence
-- **Institution:** CPH Business
+- **Institution:** CPH Business Academy
 - **Academic Year:** 2025
 
 ### Technical Environment
